@@ -21,7 +21,7 @@ let difficulty = "hard";
  *
  */
 function randomInteger(min, max) {
-  // return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 /**
@@ -41,8 +41,19 @@ function randomInteger(min, max) {
  */
 function setDelay(difficulty) {
   // TODO: Write your code here.
-  
+  if(difficulty == 'easy'){
+     return 1500;
+  } else if (difficulty= 'normal') {
+    return 1000;
+  } else if(difficulty = 'hard') {
+   return Math.floor(Math.random() * (1200 - 600 +1)) +600;
+  } else{
+    return 1000;
+  }
 }
+console.log(setDelay('easy'));
+console.log(setDelay('normal'));
+console.log(setDelay('hard'))
 
 /**
  * Chooses a random hole from a list of holes.
@@ -60,7 +71,14 @@ function setDelay(difficulty) {
  */
 function chooseHole(holes) {
   // TODO: Write your code here.
-
+let randomIndex = Math.floor(Math.random() * holes.length);
+let randomHole= holes[randomIndex];
+if(randomHole === lastHole) {
+  return chooseHole(holes);
+} else {
+  lastHole = randomHole;
+  return randomHole
+}
 }
 
 /**
@@ -85,7 +103,13 @@ function chooseHole(holes) {
 */
 function gameOver() {
   // TODO: Write your code here
-  
+  if(time > 0){
+    timeoutID = showUp();
+    return timeoutID;
+  } else{
+    let gameStopped = stopGame();
+    return gameStopped;
+  }
 }
 
 /**
@@ -98,8 +122,8 @@ function gameOver() {
 *
 */
 function showUp() {
-  let delay = 0; // TODO: Update so that it uses setDelay()
-  const hole = 0;  // TODO: Update so that it use chooseHole()
+  let delay = setDelay("difficulty"); // TODO: Update so that it uses setDelay()
+  const hole = chooseHole(holes);  // TODO: Update so that it use chooseHole()
   return showAndHide(hole, delay);
 }
 
@@ -113,12 +137,12 @@ function showUp() {
 */
 function showAndHide(hole, delay){
   // TODO: call the toggleVisibility function so that it adds the 'show' class.
-  
+   toggleVisibility(hole);
   const timeoutID = setTimeout(() => {
     // TODO: call the toggleVisibility function so that it removes the 'show' class when the timer times out.
-    
+    toggleVisibility(hole);
     gameOver();
-  }, 0); // TODO: change the setTimeout delay to the one provided as a parameter
+  }, delay); // TODO: change the setTimeout delay to the one provided as a parameter
   return timeoutID;
 }
 
