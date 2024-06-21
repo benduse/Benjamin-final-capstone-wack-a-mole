@@ -11,8 +11,8 @@ let lastHole = 0;
 let points = 0;
 let difficulty = "hard";
 
-const audioHit = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/hit.mp3?raw=true");
-const song = new Audio("https://github.com/gabrielsanchez/erddiagram/blob/main/molesong.mp3?raw=true");
+const audioHit = new Audio("https://github.com/benduse/Benjamin-final-capstone-wack-a-mole/blob/main/assets/hit.mp3");
+const song = new Audio("https://github.com/benduse/Benjamin-final-capstone-wack-a-mole/blob/main/assets/molesong.mp3");
 
 function playAudio(audioObject) {
   audioObject.play();
