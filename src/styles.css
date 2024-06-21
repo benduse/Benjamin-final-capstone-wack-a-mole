@@ -9,6 +9,9 @@ html {
   z-index:0;
   overflow: hidden;
 }
+body{
+  padding: 16px 16px 16px;
+}
 
 h1 {
   text-align: center;
@@ -87,3 +90,12 @@ button{
   border-color: green;
 }
 
+@media all and (min-width: 800px) {
+  section {
+    padding: 0 10%;
+  }
+
+  .group {
+    flex-direction: row;
+  }
+}
