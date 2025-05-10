@@ -182,6 +182,8 @@ function startGame(){
 startButton.addEventListener("click", startGame);
 if ( !testMode ) setEventListeners();
 
+document.getElementById("year").innerHTML = new Date().getFullYear();
+
 // Please do not modify the code below.
 // Used for testing purposes.
 window.randomInteger = randomInteger;
